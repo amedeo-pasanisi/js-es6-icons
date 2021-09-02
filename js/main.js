@@ -109,8 +109,10 @@ const colors = [
 ];
 const cardsContainer = document.getElementById('cards');
 
-print (icons, cardsContainer);
+const coloredArray = colorIcons (icons, colors);
+print (coloredArray, cardsContainer);
 
+getTypes(icons);
 console.log (getTypes(icons));
 
 // FUNZIONI
@@ -121,7 +123,7 @@ function print (array, container) {
 
     // stampo una card dentro il container tante volte quanti sono gli elementi dentro l'array
     array.forEach((element) => {
-        const {name, family, prefix, type} = element
+        const {name, family, prefix} = element;
     
         container.innerHTML +=
         `<div class="card">
@@ -134,12 +136,28 @@ function print (array, container) {
 function getTypes (array) {
     // creo un array "types"
     const types = [];
-
+    
     // pusho in types solo le chiavi "type" degli elementi dell'array che già non sono state pushate
     array.forEach((element) => {
-        if (!types.includes(element.type)) {
-            types.push (element.type);
+        const {type} = element;
+
+        if (!types.includes(type)) {
+            types.push (type);
         }
     });
     return types;
+}
+
+function colorIcons (array, colors) {
+    // creo un "coloredArray"
+    const coloredArray = array.map((element) => {
+        // per ogni elemento dell'array ricavo la variabile type
+        const {type} = element;
+        // per ogni elemento dell'array ricavo l'indice (0,1 o 2) del "type" all'interno dell'array "types" (creato con la funzione "getTypes")
+        const indexType = getTypes(array).indexOf(type);
+        // per ogni elemento dell'array creo una chiave "colore" con il relativo colore assegnato grazie ad "indexType"
+        element.color = colors[indexType];
+        return element;
+    })
+    return coloredArray;
 }
