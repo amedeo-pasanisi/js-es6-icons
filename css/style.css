@@ -20,7 +20,7 @@ header {
     font-size: 40px;
 }
 
-main {
+#cards {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -37,6 +37,6 @@ main {
     height: 80px;
     margin: 20px;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(243, 243, 243);
     border-radius: 10px;
 }
