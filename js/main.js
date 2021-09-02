@@ -112,8 +112,7 @@ const cardsContainer = document.getElementById('cards');
 const coloredArray = colorIcons (icons, colors);
 print (coloredArray, cardsContainer);
 
-getTypes(icons);
-console.log (getTypes(icons));
+console.log(cardsContainer)
 
 // FUNZIONI
 
@@ -123,11 +122,11 @@ function print (array, container) {
 
     // stampo una card dentro il container tante volte quanti sono gli elementi dentro l'array
     array.forEach((element) => {
-        const {name, family, prefix} = element;
+        const {name, family, prefix, color} = element;
     
         container.innerHTML +=
         `<div class="card">
-            <i class="${family} ${prefix + name}"></i>
+            <i class="${family} ${prefix + name}" style="color: ${color}"></i>
             <div class="nome">${name.toUpperCase()}</div>
         </div>`;
     });
