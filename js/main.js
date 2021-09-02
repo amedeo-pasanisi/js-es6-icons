@@ -112,9 +112,18 @@ const cardsContainer = document.getElementById('cards');
 const coloredArray = colorIcons (icons, colors);
 print (coloredArray, cardsContainer);
 
-console.log(cardsContainer)
+const types = getTypes(coloredArray);
+const select = document.getElementById('type');
+printOptions(types, select)
 
 // FUNZIONI
+
+function printOptions (array, container) {
+    array.forEach((element) => {
+        container.innerHTML +=
+        `<option value="${element}">${element}</option>`
+    })
+}
 
 function print (array, container) {
     // svuoto il container
@@ -138,6 +147,7 @@ function getTypes (array) {
     
     // pusho in types solo le chiavi "type" degli elementi dell'array che già non sono state pushate
     array.forEach((element) => {
+        // per ogni elemento dell'array ricavo la variabile type
         const {type} = element;
 
         if (!types.includes(type)) {
