@@ -32,34 +32,34 @@ const colors = [
 ];
 
 // MILESTONE 1 e 2
-const coloredArray = colorIcons (icons, colors); // array "icons" con aggiunta ad ogni oggetto la chiave color
+const coloredArray = colorIcons (icons, colors); // creo un array che contiene gli oggetti di "icons" con aggiunta ad ogni oggetto la chiave color
 const cardsContainer = document.getElementById('cards');
-print (coloredArray, cardsContainer);
+print (coloredArray, cardsContainer); // inietto il codice html nel "cardsContainer"
 
 // MILESTONE 3
-const types = getTypes(coloredArray); // array che contiene i "type" degli oggetti nell'array "icons"
+const types = getTypes(coloredArray); // creo un array che contiene i "type" degli oggetti nell'array "icons"
 const select = document.getElementById('type');
-printOptions(types, select)
+printOptions(types, select) // inietto il codice html in "select"
 
-select.onchange = function (element) {
-    const filteredArray = filterValues (coloredArray, element.target.value); // array che contiene solo gli oggetti di "icons" con il "type" selezionato in "select"
-    print (filteredArray, cardsContainer)
+select.onchange = function (element) { // eseguo questo codice ogni volta che seleziono un'"option" diversa su "select"
+    const filteredArray = filterValues (coloredArray, element.target.value); // creo un array che contiene solo gli oggetti di "icons" con il "type" selezionato in "select"
+    print (filteredArray, cardsContainer) // inietto il codice html nel "cardsContainer"
 }
 // FINE PARTE LOGICA
 
 
 // FUNZIONI
 function printOptions (array, container) {
-    array.forEach((element) => {
-        container.innerHTML +=
+    array.forEach((element) => { // per ogni elemento dell'array
+        container.innerHTML +=   // inietto del codice html nel container
         `<option value="${element}">${element}</option>`
     })
 }
 
 function filterValues (array, type) {
-    // creo un array "filteredIcons"
+    // creo un array "filteredArray"
     const filteredArray = array.filter((element) => {
-        // pusho in "filteredIcons" solo gli elementi con type uguale a quello del parametro inserito nella funzione
+        // per ogni elemento di array pusho in "filteredArray" solo gli elementi con "type" uguale a quello del parametro inserito nella funzione
         if (element.type === type) {
             return true;
         }
